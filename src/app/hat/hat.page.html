@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>The Sorting Hat</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<!--Diplays Sorting hat with a button below, only one click allowed as you can only be sorted into one house-->
+<!--Will then disable button and display which house user belongs in, also appears on home screen-->
+  <div class="hat" ion-align-items-center>
+    <ion-img src="https://vignette.wikia.nocookie.net/harrypotter/images/6/62/Sorting_Hat.png/revision/latest?cb=20161120072849" style="max-height: 600px;"></ion-img>
+    <ion-button size="large" (click)="buttonClick()" disabled="{{this.HatService.currentHouse || false}}">{{ this.HatService.currentHouse || "Sort me into a house" }}</ion-button>
+  </div>
+</ion-content>

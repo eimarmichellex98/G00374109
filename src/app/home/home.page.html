@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Harry Potter App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="background">
+    <div>
+      <ion-img src="https://static0.srcdn.com/wordpress/wp-content/uploads/2019/11/Harry-Potter-and-Friends-Featured-Social-Media-Image.jpg" class="dropshadow" style="max-width: 500px; margin: 0 auto;">
+      </ion-img>
+    </div>
+    <!--Your house you have been sorted into (when sorting hat has been used) appears here-->
+    <!--Displays button to other pages on home screen-->
+    <div class="housetext" id="house">{{ null }}</div>
+    <div class="buttoncenter" class="buttondiv">
+      <ion-chip outline>
+        <ion-label>Your house:</ion-label>
+        <ion-badge style="margin-left: 6px;" [ngStyle]="{'background': this.colors[ this.HatmanagerService.currentHouse ] || null}" color="danger">{{ this.HatmanagerService.currentHouse || "None" }}</ion-badge>
+      </ion-chip>
+      <div *ngFor="let page of pages"><ion-button size="large" routerLink="{{ page.router }}">{{ page.name }}</ion-button></div>
+    </div>
+  </div>
+</ion-content>

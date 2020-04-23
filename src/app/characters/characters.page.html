@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Character List</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!--Long list of characters that appeared in books/movies-->
+  <!--Displays character name, and/or their occupation, hogwarts house, type of character they are-->
+  <ion-card *ngFor="let character of this.CharService.Characters" button = "true" href="https://www.google.com/search?q={{character.name}} Harry Potter" [ngStyle]="{'background-color': ( character.deathEater || character.dumbledoresArmy ) && '#ffcfcf' || null}">
+    <ion-card-header>
+      <ion-card-subtitle *ngIf="character.school != null">
+        {{ character.school }}
+      </ion-card-subtitle>
+
+      <ion-card-title>
+        {{ character.name }} {{ character.house && ("(" + character.house + ")") }}
+        <ion-badge *ngIf="character.bloodStatus != 'unknown'" style="margin-right: 4px;">
+          {{ character.bloodStatus }}
+        </ion-badge>
+        <ion-badge style="margin-right: 4px;" color="warning" *ngIf="( character.species != 'human' )">
+          {{ character.species }}
+        </ion-badge>
+        <div>
+          <ion-chip *ngIf="character.role != null" style="margin-left: auto;">
+            {{ character.role }}
+          </ion-chip>
+        </div>
+      </ion-card-title>
+    </ion-card-header>
+  </ion-card>
+</ion-content>

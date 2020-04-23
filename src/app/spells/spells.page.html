@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Spells</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!--Lists of spells, including what it does, when clicked will bring up a Google page about it-->
+  <ion-card *ngFor="let spell of this.SpellManager.Spells" button="true" href="https://www.google.com/search?q={{spell.spell}} Harry Potter">
+    <ion-card-header>
+      <ion-badge>{{ spell.type }}</ion-badge>
+      <ion-card-title>{{ spell.spell }}</ion-card-title>
+    </ion-card-header>
+
+
+    <ion-card-content>
+      {{ spell.effect }}
+    </ion-card-content>
+  </ion-card>
+</ion-content>

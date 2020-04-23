@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>List of Houses</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+      <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; height: 100%;" *ngIf="this.houses == null">
+        <ion-button (click)="refresh()">Refresh</ion-button>
+      </div>
+      <!--List of the houses, describing characteristics, mascots and name of house-->
+      <ion-card button="true" *ngFor="let house of this.houses" href="https://www.google.com/search?q={{house.name}}" >
+        <ion-card-header>
+          <ion-card-subtitle>
+            Mascot: {{ house.mascot.toUpperCase() }}
+          </ion-card-subtitle>
+          <ion-card-title>
+            {{ house.name }}
+          </ion-card-title>
+          <ion-badge *ngFor="let value of house.values" style="margin-right: 6px; margin-top: 4px;">{{ value }}</ion-badge>
+        </ion-card-header>
+        <!--Displays founder of house, head teacher, number of students and the house colors-->
+        <ion-card-content>
+          <div>
+              <div>
+                <ion-label>House Founder:</ion-label>
+                <ion-chip style="height: 20px;" outline="true">{{ house.founder }}</ion-chip>
+              </div>
+              <div>
+                <ion-label>Head of House:</ion-label>
+                <ion-chip style="height: 20px;" outline="true">{{ house.headOfHouse }}</ion-chip>
+              </div>
+              <div>
+                <ion-label>Number of Members:</ion-label>
+                <ion-chip style="height: 20px;" outline="true">{{ house.members.length }}</ion-chip>
+              </div>
+
+              <div>
+                <ion-label>House Colors:</ion-label>
+                <ion-chip *ngFor="let color of house.colors" style="height: 20px;" outline="true"> {{ color }}</ion-chip>
+              </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+</ion-content>
